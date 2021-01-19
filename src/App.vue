@@ -1,16 +1,16 @@
 <template>
-  <Products/>
+  <Products />
 </template>
 
 <script>
-import Products from './components/Products.vue'
+import Products from "./components/products/Products.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Products
-  }
-}
+    Products,
+  },
+};
 </script>
 
 <style>

@@ -4,13 +4,13 @@
     <div
       class="display-image"
       :style="{ backgroundImage: `url(https:${hit.image_url}` }"
-    ></div>
+    />
     <h1 class="name">{{ hit.short_name }}</h1>
     <h3 class="description" v-html="hit.description"></h3>
 
     <div class="pricing pt-2">
       <div class="d-flex justify-content-between mb-2">
-        <p class="price">{{ hit.currency }} {{ price.default }}</p>
+        <p class="price">{{ price.default_formated }}</p>
         <p v-if="!!getDiscountPercentage()" class="discount-percentage">
           -{{ getDiscountPercentage() }}%
         </p>
@@ -34,9 +34,6 @@
 export default {
   name: "ProductCard",
   props: ["hit"],
-  mounted() {
-    console.log(this.price, "price");
-  },
   data() {
     return {
       price: this.hit.price[this.hit.currency],
@@ -63,6 +60,7 @@ export default {
   background-color: #eeeeee;
   padding: 25px;
   .custom-badge {
+    margin-bottom: 10px;
     span {
       text-transform: uppercase;
       font-size: 14px;
@@ -73,7 +71,7 @@ export default {
     }
   }
   .display-image {
-    height: 320px;
+    min-height: 265px;
     margin-bottom: 15px;
     background-position: center center;
     background-repeat: no-repeat;

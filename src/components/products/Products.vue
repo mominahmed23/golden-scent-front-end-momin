@@ -33,7 +33,9 @@
           <productCard :hit="hit"
         /></b-col>
       </b-row>
-      <h2 v-else class="text-center">No Products</h2>
+      <h2 v-else class="text-center">
+        {{ loading ? "Loading" : "No" }} Products
+      </h2>
     </b-container>
   </div>
 </template>
@@ -47,7 +49,7 @@ export default {
   data() {
     return {
       hits: null,
-      loading: true,
+      loading: false,
       errored: false,
     };
   },
@@ -65,6 +67,7 @@ export default {
           this.hits = response.data.hits;
         })
         .catch((error) => {
+          console.log(error);
           this.errored = true;
           this.loading = false;
         });
