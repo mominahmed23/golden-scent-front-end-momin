@@ -1,18 +1,18 @@
 <template>
   <div class="product-card">
       <div class="custom-badge"><span>Exclusive</span></div>
-    <div class="display-image" style="background-image:url('https://pngimg.com/uploads/perfume/perfume_PNG10262.png')"></div>
-    <h1 class="name">5th Avenue</h1>
+    <div class="display-image" :style="{backgroundImage: `url(https:${hit.image_url}`}"></div>
+    <h1 class="name">{{hit.name}}</h1>
     <h3 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit officiis, magni velit, a, volup!</h3>
 
      <div class="pricing pt-2">
          <div class="d-flex justify-content-between mb-2">
-             <p class="price">SAR 120</p>
+             <p class="price">{{hit.currency}} {{hit.special_price}}</p>
              <p class="discount-percentage">-20%</p>
          </div>
          <div class="d-flex justify-content-between">
-             <p class="discarded-amount"><del>SAR 150</del></p>
-             <p class="saved-amount">Save SAR 30</p>
+             <p class="discarded-amount"><del>{{hit.currency}} 150</del></p>
+             <p class="saved-amount">Save {{hit.currency}} 30</p>
          </div>
      </div>
   </div>
@@ -21,8 +21,9 @@
 <script>
 export default {
   name: 'ProductCard',
-  props: {
-    msg: String
+  props: ["hit"],
+     mounted () {
+      console.log(this.hit);
   }
 }
 </script>
@@ -30,6 +31,7 @@ export default {
 
 <style lang="scss">
 .product-card{
+    height: 100%;
     background-color: #eeeeee;
     padding: 25px;
     .custom-badge{
