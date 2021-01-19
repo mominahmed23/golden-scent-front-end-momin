@@ -6,7 +6,10 @@
       :style="{ backgroundImage: `url(https:${hit.image_url}` }"
     />
     <h1 class="name">{{ hit.short_name }}</h1>
-    <h3 class="description" v-html="hit.description"></h3>
+    <h3
+      class="description"
+      v-html="hit.description.substr(21, 50).trim() + '...'"
+    ></h3>
 
     <div class="pricing pt-2">
       <div class="d-flex justify-content-between mb-2">
